@@ -2,27 +2,21 @@
 # Smart Energy Consumption Optimization - Week 1
 
 ## Project Description
-Analyzing household energy consumption patterns to build an AI-powered recommendation system for optimizing energy efficiency and reducing costs.
+We analyze how we can use machine learning to learn dataset of household and tell us how we are overutilizing electricity in our day to day life, how we can 
+use it keeping in mind about the future generation and keeping it in our mind to keep our some of our money safe from over usage of electricity. 
 
 ## Dataset
-- **Source**: [Kaggle - Household Energy Consumption](https://www.kaggle.com/datasets/samxsam/household-energy-consumption)
-- **Size**: 90,000 records, 7 features
-- **Features**: Household_ID, Date, Energy_Consumption_kWh, Household_Size, Avg_Temperature_C, Has_AC, Peak_Hours_Usage_kWh
+- **Source**: [Kaggle - Household Electricity Consumption]((https://www.kaggle.com/datasets/thedevastator/240000-household-electricity-consumption-records))
+- **Size**: 240000+ records, 9 features
+- **Features**: Date, Time, Global_active_power, Global_reactive_power, voltage, Global_intensity, sub_metering_1, sub_metering_2, sub_metering_3
 
 ## Week 1 Tasks Completed
-- Importing Libraries
+- Imported Libraries
 - Dataset Overview
 - Inspecting the data structure
 - Checking For Missing Values
 - Basic Data Cleaning
 - Data Splitiing
-- Extra Part (Data Visualization)
-
-## Result we found
-- Average daily consumption: ~7.5 kWh per household
-- Households with AC consume significantly more energy
-- Larger households show 15-20% higher consumption
-- Peak hours account for ~40% of daily usage
 
 ## Technologies Used
 - Python, Pandas, NumPy
@@ -31,7 +25,5 @@ Analyzing household energy consumption patterns to build an AI-powered recommend
 
 ## Files
 - `WEEK1_SMART_ENERGY_CONSUMPTION.ipynb` - Main analysis notebook
-- `household_energy_consumption.csv` - Dataset
+- `household_power_consumption.csv` - Dataset
 
-**EduNet Shell AI Internship - Week 1**  
-*Date: August 27, 2025*
