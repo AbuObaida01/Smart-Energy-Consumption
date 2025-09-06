@@ -27,3 +27,15 @@ use it keeping in mind about the future generation and keeping it in our mind to
 - `WEEK1_SMART_ENERGY_CONSUMPTION.ipynb` - Main analysis notebook
 - `household_power_consumption.csv` - Dataset
 
+# Week 2
+
+In week 2 i work with the same dataset because it is the best dataset that i can get to train my model
+
+## Week 2 Tasks completed
+- Firstly I divided my model in two parts one is target and other is generic .
+- The genric part is x and the target is y.
+- I split these two in further two parts one for training and other for testing.
+- Then by looking at the dataset i cna clearly see that we have to use linear regression on our dataset to train it.
+- I applied linear regression and find MSE, MAE, R^2 coefficient.
+
+## Week 2 Completed from my side
