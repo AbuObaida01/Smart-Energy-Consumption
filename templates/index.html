@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Household Power Consumption Predictor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        .input-group {
+            margin-bottom: 25px;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        .form-container input, .form-container select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .form-container input:focus, .form-container select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .form-container input[type="submit"] {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+        .form-container input[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .result {
+            font-size: 1.8em;
+            color: #2e7d32;
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #e8f5e8;
+            border-radius: 10px;
+            border-left: 5px solid #4caf50;
+        }
+        .info-text {
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .energy-icon {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .feature-hint {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="energy-icon">⚡</div>
+        <h2>Household Power Consumption Predictor</h2>
+        <p class="subtitle">Predict Global Active Power Using Advanced Energy Analytics</p>
+        
+        <form action="/predict" method="post">
+            <div class="input-group">
+                <label for="Global_reactive_power">Global Reactive Power (kW):</label>
+                <input type="number" step="0.001" name="Global_reactive_power" min="0" max="1" value="0.1" required>
+                <div class="feature-hint">Reactive power consumed by household (typically 0.0 - 0.5 kW)</div>
+            </div>
+            
+            <div class="input-group">
+                <label for="Voltage">Voltage (V):</label>
+                <input type="number" step="0.1" name="Voltage" min="220" max="250" value="240" required>
+                <div class="feature-hint">Minute-averaged voltage (usually 230-245V)</div>
+            </div>
+            
+            <div class="input-group">
+                <label for="Global_intensity">Global Intensity (A):</label>
+                <input type="number" step="0.1" name="Global_intensity" min="0" max="20" value="4.0" required>
+                <div class="feature-hint">Current intensity in amperes (0-15A typical)</div>
+            </div>
+            
+            <div class="input-group">
+                <label for="Sub_metering_1">Kitchen Power (Wh):</label>
+                <input type="number" step="0.1" name="Sub_metering_1" min="0" max="40" value="5.0" required>
+                <div class="feature-hint">Kitchen appliances: dishwasher, oven, microwave</div>
+            </div>
+            
+            <div class="input-group">
+                <label for="Sub_metering_2">Laundry Room Power (Wh):</label>
+                <input type="number" step="0.1" name="Sub_metering_2" min="0" max="40" value="2.0" required>
+                <div class="feature-hint">Washing machine, dryer, refrigerator</div>
+            </div>
+            
+            <div class="input-group">
+                <label for="Sub_metering_3">Water Heater & AC Power (Wh):</label>
+                <input type="number" step="0.1" name="Sub_metering_3" min="0" max="40" value="8.0" required>
+                <div class="feature-hint">Electric water heater and air conditioner</div>
+            </div>
+            
+            <div class="input-group">
+                <label for="Hour">Hour of Day:</label>
+                <select name="Hour" required>
+                    <option value="">Select Hour</option>
+                    <option value="0">00:00 (Midnight)</option>
+                    <option value="1">01:00</option>
+                    <option value="2">02:00</option>
+                    <option value="3">03:00</option>
+                    <option value="4">04:00</option>
+                    <option value="5">05:00</option>
+                    <option value="6">06:00</option>
+                    <option value="7">07:00</option>
+                    <option value="8">08:00</option>
+                    <option value="9">09:00</option>
+                    <option value="10">10:00</option>
+                    <option value="11">11:00</option>
+                    <option value="12">12:00 (Noon)</option>
+                    <option value="13">13:00</option>
+                    <option value="14">14:00</option>
+                    <option value="15">15:00</option>
+                    <option value="16">16:00</option>
+                    <option value="17">17:00</option>
+                    <option value="18">18:00</option>
+                    <option value="19">19:00</option>
+                    <option value="20">20:00</option>
+                    <option value="21">21:00</option>
+                    <option value="22">22:00</option>
+                    <option value="23">23:00</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="DayOfWeek">Day of Week:</label>
+                <select name="DayOfWeek" required>
+                    <option value="">Select Day</option>
+                    <option value="0">Monday</option>
+                    <option value="1">Tuesday</option>
+                    <option value="2">Wednesday</option>
+                    <option value="3">Thursday</option>
+                    <option value="4">Friday</option>
+                    <option value="5">Saturday</option>
+                    <option value="6">Sunday</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="Month">Month:</label>
+                <select name="Month" required>
+                    <option value="">Select Month</option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="IsWeekend">Is Weekend:</label>
+                <select name="IsWeekend" required>
+                    <option value="">Select Option</option>
+                    <option value="1">Yes (Weekend)</option>
+                    <option value="0">No (Weekday)</option>
+                </select>
+            </div>
+            
+            <input type="submit" value="🔮 Predict Global Active Power">
+        </form>
+        
+        {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+        
+        <p class="info-text">
+            This AI model predicts Global Active Power (kW) based on household electrical measurements.<br>
+            Trained on 260,000+ minute-by-minute power consumption records from a real French household.
+        </p>
+    </div>
+</body>
+</html>
