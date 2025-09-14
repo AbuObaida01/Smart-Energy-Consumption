@@ -39,3 +39,7 @@ In week 2 i work with the same dataset because it is the best dataset that i can
 - I applied linear regression and find MSE, MAE, R^2 coefficient.
 
 ## Week 2 Completed from my side
+
+## Week 3
+In week 3 we just needed to deploy our project
+I deployed it on render
